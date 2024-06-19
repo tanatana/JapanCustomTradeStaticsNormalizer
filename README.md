@@ -18,7 +18,7 @@ Flags:
 
 ```
 Exp or Imp,Year,HS,Unit1,Unit2,Quantity1-Year,Quantity2-Year,Value-Year,Quantity1-Jan,Quantity2-Jan,Value-Jan,Quantity1-Feb,Quantity2-Feb,Value-Feb,Quantity1-Mar,Quantity2-Mar,Value-Mar,Quantity1-Apr,Quantity2-Apr,Value-Apr,Quantity1-May,Quantity2-May,Value-May,Quantity1-Jun,Quantity2-Jun,Value-Jun,Quantity1-Jul,Quantity2-Jul,Value-Jul,Quantity1-Aug,Quantity2-Aug,Value-Aug,Quantity1-Sep,Quantity2-Sep,Value-Sep,Quantity1-Oct,Quantity2-Oct,Value-Oct,Quantity1-Nov,Quantity2-Nov,Value-Nov,Quantity1-Dec,Quantity2-Dec,Value-Dec
-2,2023,'000000011',  ,KG,0,1917608,831854,0,87030,39506,0,72114,34952,0,135866,41532,0,212472,73405,0,174017,94372,0,115162,61624,0,136110,67990,0,191268,83100,0,194132,81240,0,207532,64179,0,180077,93200,0,211828,96754
+2,2023,'000000011',  ,KG,0,1917608,831854,0,87030,39506,0,72114,34952,0,135866,41532,0,212472,73405,0,174017,94372,0,115162,61624,0,136110,67990,0,191268,83100,0,194132,81240,0,207532,64179,0,180077,93200,0,211828,96754,191268,83100,0,194132,81240,0,207532,64179,0,180077,93200,0,211828,96754
 ```
 
 ### Output
