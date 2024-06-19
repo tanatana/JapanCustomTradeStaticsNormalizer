@@ -1,4 +1,4 @@
-module github.com/tanatana/JapanCustomTradeStaticsNormalizer
+module github.com/tanatana/trade-statics-normalizer
 
 go 1.22.4
 
