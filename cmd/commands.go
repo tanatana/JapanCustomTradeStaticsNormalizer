@@ -4,6 +4,8 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	"slices"
+	"strings"
 
 	"github.com/spf13/cobra"
 )
@@ -24,10 +26,11 @@ you need normalize these data. Then this tool helps you.`,
 				Exit(nil, 1)
 			}
 
+			filters := strings.Split(filter, ",")
+
 			newRows := [][]string{}
 			newRows = append(newRows, []string{"expOrImp", "year", "month", "HS", "data category", "unit", "value"})
 			for _, arg := range args {
-				fmt.Println(arg)
 				file, err := os.Open(arg)
 				if err != nil {
 					Exit(err, 1)
@@ -48,6 +51,9 @@ you need normalize these data. Then this tool helps you.`,
 					HS := row[2]
 					// HS コードのクォートを取り除く
 					HS = HS[1 : len(HS)-1]
+					if filter != "" && len(filters) > 0 && !slices.Contains(filters, HS) {
+						continue
+					}
 
 					for _, col := range []int{3, 4, 5} {
 						unit := row[col]
@@ -59,7 +65,7 @@ you need normalize these data. Then this tool helps you.`,
 							cat = "Quantity2"
 						case 5:
 							cat = "Value"
-							unit = "CIF(千円)"
+							unit = ""
 						}
 
 						// ignore empty unit
@@ -102,12 +108,13 @@ you need normalize these data. Then this tool helps you.`,
 			}
 		},
 	}
-	filters string
-	out     string
+	filter string
+	out    string
 )
 
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "", "Outpu file name. Default is STDOUT.")
+	rootCmd.PersistentFlags().StringVarP(&filter, "filter", "f", "", "HS code filter. Default is all.")
 }
 
 // Execute executes the root command.
