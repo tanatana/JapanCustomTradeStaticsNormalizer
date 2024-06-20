@@ -113,7 +113,7 @@ you need normalize these data. Then this tool helps you.`,
 )
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "", "Outpu file name. Default is STDOUT.")
+	rootCmd.PersistentFlags().StringVarP(&out, "out", "o", "", "Output file name. Default is STDOUT.")
 	rootCmd.PersistentFlags().StringVarP(&filter, "filter", "f", "", "HS code filter. Default is all.")
 }
 
