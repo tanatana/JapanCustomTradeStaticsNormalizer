@@ -25,7 +25,7 @@ you need normalize these data. Then this tool helps you.`,
 			}
 
 			newRows := [][]string{}
-			newRows = append(newRows, []string{"expOrImp", "year", "month", "HS", "unit", "value"})
+			newRows = append(newRows, []string{"expOrImp", "year", "month", "HS", "data category", "unit", "value"})
 			for _, arg := range args {
 				fmt.Println(arg)
 				file, err := os.Open(arg)
@@ -46,18 +46,28 @@ you need normalize these data. Then this tool helps you.`,
 					expOrImp := row[0]
 					year := row[1]
 					HS := row[2]
+					// HS コードのクォートを取り除く
+					HS = HS[1 : len(HS)-1]
 
 					for _, col := range []int{3, 4, 5} {
 						unit := row[col]
-						if col == 5 {
+						cat := ""
+						switch col {
+						case 3:
+							cat = "Quantity1"
+						case 4:
+							cat = "Quantity2"
+						case 5:
+							cat = "Value"
 							unit = "CIF(千円)"
 						}
+
 						// ignore empty unit
 						if unit == "  " {
 							continue
 						}
 						for _, month := range []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} {
-							monthStr := fmt.Sprintf("%02d", month)
+							monthStr := fmt.Sprintf("%d", month)
 							// Unit1 は 3列目、 Unit2 は4列目 なので
 							// col から 3 を引いてオフセットを求める
 							offset := col - 3
@@ -65,7 +75,8 @@ you need normalize these data. Then this tool helps you.`,
 							// 最初に年のデータが3列あるので、1月のデータは 1*3 で
 							// アクセス可能
 							value := row[5+offset+month*3]
-							newRow := []string{expOrImp, year, monthStr, HS, unit, value}
+
+							newRow := []string{expOrImp, year, monthStr, HS, cat, unit, value}
 							newRows = append(newRows, newRow)
 						}
 					}

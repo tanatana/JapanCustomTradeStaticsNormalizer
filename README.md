@@ -12,6 +12,12 @@ Flags:
   -o, --out string   Outpu file name. Default is STDOUT.
 ```
 
+## Installation
+
+```sh
+go install github.com/tanatana/trade-statics-normalizer
+```
+
 ## Example
 
 ### Input
