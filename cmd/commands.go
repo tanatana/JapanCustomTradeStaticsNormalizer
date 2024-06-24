@@ -64,7 +64,7 @@ you need normalize these data. Then this tool helps you.`,
 						case 4:
 							cat = "Quantity2"
 						case 5:
-							cat = "Value"
+							cat = "Volume"
 							unit = ""
 						}
 
